@@ -1,3 +1,4 @@
+import { composePrompt } from "@/ai/prompts";
 import { google } from "@ai-sdk/google";
 import {
   convertToModelMessages,
@@ -12,6 +13,7 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: google("gemini-2.5-flash"),
+    system: composePrompt(),
     messages: await convertToModelMessages(messages),
   });
 
