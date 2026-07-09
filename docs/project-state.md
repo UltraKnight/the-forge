@@ -25,6 +25,17 @@ Last Updated: 2026-07-07
 - Empty state
 - Loading indicator
 
+### Sprint 4 — Prompt Engineering
+- Introduced provider-agnostic prompt architecture.
+- Added reusable system prompt.
+- Added prompt presets.
+- Added dynamic prompt composition.
+- Decoupled prompt logic from the API route.
+
+## Current Sprint
+
+Sprint 4 — Temperature control
+
 ## Current Architecture
 
 Browser

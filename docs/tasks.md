@@ -68,8 +68,8 @@ Status: 🟢 Ready to start
 
 ### Objectives
 
-- [ ] System prompts
-- [ ] Prompt presets
+- [x] System prompts
+- [x] Prompt presets
 - [ ] Temperature control
 - [ ] Top-P control
 - [ ] Max tokens

@@ -78,3 +78,33 @@ This sprint focused on improving the overall chat experience without introducing
 - Kept the current component architecture.
 - Avoided premature abstractions.
 - Deferred Copy Code Button until a better Markdown rendering strategy is implemented.
+
+---
+
+# Sprint 4 — Prompt Engineering
+
+## Summary
+
+This sprint focused on introducing a maintainable, provider-agnostic prompt architecture as the foundation for future AI capabilities.
+
+## Implemented
+
+- System prompts
+- Prompt composition
+- Prompt presets
+- Dynamic prompt context
+
+## Engineering Decisions
+
+- Centralized prompt construction outside the API route.
+- Designed prompt composition to be provider-agnostic.
+- Built a composable architecture that can evolve to support RAG, Tool Calling, Agents, and MCP.
+- Deferred prompt controls (temperature, Top-P, max tokens, model selector) until the prompt architecture was established.
+
+## Remaining
+
+- Temperature control
+- Top-P control
+- Max tokens
+- Model selector
+- Prompt inspector
