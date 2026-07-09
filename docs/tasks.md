@@ -70,6 +70,8 @@ Status: 🟢 Ready to start
 
 - [x] System prompts
 - [x] Prompt presets
+- [x] Centralize generation configuration
+- [x] Introduce provider abstraction
 - [ ] Temperature control
 - [ ] Top-P control
 - [ ] Max tokens

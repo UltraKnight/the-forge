@@ -1,5 +1,6 @@
+import { defaultGenerationConfig } from "@/ai/config/generation";
 import { composePrompt } from "@/ai/prompts";
-import { google } from "@ai-sdk/google";
+import { getLanguageModel } from "@/ai/providers";
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
@@ -10,9 +11,11 @@ import {
 
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();
+  const { model, ...config } = defaultGenerationConfig;
 
   const result = streamText({
-    model: google("gemini-2.5-flash"),
+    ...config,
+    model: getLanguageModel(model),
     system: composePrompt(),
     messages: await convertToModelMessages(messages),
   });

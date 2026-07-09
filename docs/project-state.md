@@ -31,10 +31,22 @@ Last Updated: 2026-07-07
 - Added prompt presets.
 - Added dynamic prompt composition.
 - Decoupled prompt logic from the API route.
+- Centralized generation configuration
+- Provider abstraction
+
+## Next
+
+### Sprint 4
+
+- ⏳ Temperature UI
+- ⏳ Top-P
+- ⏳ Max Tokens
+- ⏳ Model selection
+- ⏳ Prompt Inspector
 
 ## Current Sprint
 
-Sprint 4 — Temperature control
+Sprint 4 — Prompt Engineering
 
 ## Current Architecture
 
