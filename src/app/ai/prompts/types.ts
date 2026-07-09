@@ -1,2 +1,5 @@
-// Reserved for future presets/context.
-export type ComposePromptOptions = object;
+import type { PromptPreset } from "./presets";
+
+export interface ComposePromptOptions {
+  preset?: PromptPreset;
+}
