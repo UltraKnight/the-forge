@@ -4,8 +4,11 @@ import type { ComposePromptOptions } from "./types";
 
 export function composePrompt({
   preset = "default",
+  context = [],
 }: ComposePromptOptions = {}) {
-  console.info("AI::ComposePrompt -> composePromptOptions:", preset);
-
-  return [FORGE_IDENTITY, promptPresets[preset]].filter(Boolean).join("\n\n");
+  // TODO: Add a prompt inspector for dev mode
+  
+  return [FORGE_IDENTITY, promptPresets[preset], ...context]
+    .filter(Boolean)
+    .join("\n\n");
 }
