@@ -4,6 +4,19 @@ export interface ModelConfig {
   label: string;
 }
 
+/**
+ * Temperature
+ * Controls randomness. Lower values produce more deterministic responses. Higher values increase creativity.
+ * 
+ * Top P
+ * Limits the model to the most probable tokens before sampling. Usually left at the default unless fine-tuning generation.
+
+ * Max Output Tokens
+ * Maximum number of tokens the model can generate. Larger values allow longer responses but increase cost and latency.
+ * 
+ * Model
+ * Selects which language model will generate the response.
+ */
 export interface GenerationConfig {
   model: ModelConfig;
   temperature: number;

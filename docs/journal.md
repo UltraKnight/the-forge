@@ -13,20 +13,20 @@ Build the first AI endpoint capable of streaming responses.
 - Created a Next.js project.
 - Configured the Google Gemini API.
 - Implemented the `/api/chat` Route Handler.
-- Streamed responses using the Vercel AI SDK.
+- Streamed responses using the AI SDK.
 
 ### What I learned
 
 - Route Handlers execute on the server.
 - API keys should never reach the browser.
-- The model is stateless.
+- LLMs are stateless.
 - Streaming uses Server-Sent Events (SSE).
 
-### Engineering Notes
+### Engineering Decisions
 
 - Keep Route Handlers small.
-- The browser should never communicate directly with the LLM.
-- The server owns authentication.
+- The browser never communicates directly with the LLM.
+- The server owns authentication and provider configuration.
 
 ---
 
@@ -39,72 +39,86 @@ Build the first ChatGPT-like interface.
 ### What I built
 
 - Connected the frontend using `useChat()`.
-- Added message rendering.
-- Added a reusable chat architecture.
-- Implemented streaming responses.
+- Added streaming message rendering.
+- Built a reusable chat component architecture.
+- Connected the frontend to the backend API.
 
 ### What I learned
 
-- The AI SDK handles the streaming protocol.
+- The AI SDK abstracts the streaming protocol.
 - UI Messages are different from Model Messages.
 - Streaming does not guarantee one token per event.
 - Time To First Token (TTFT) is different from generation speed.
 
-### Engineering Notes
+### Engineering Decisions
 
-- Keep components focused on a single responsibility.
-- Separate presentation from AI logic.
+- Keep presentation separate from AI logic.
 - Design components for future extensibility.
+- Keep AI-specific logic outside UI components.
 
 ---
 
-# Sprint 3 — UX Polish
+## Sprint 3 — UX Polish
 
-## Summary
+### Goal
 
-This sprint focused on improving the overall chat experience without introducing unnecessary architectural complexity.
+Improve the chat experience while keeping the architecture simple.
 
-## Implemented
+### What I built
 
-- GitHub Flavored Markdown
-- Auto-scroll
-- Chat bubbles
-- Header
-- Empty state
-- Loading indicator
+- GitHub Flavored Markdown rendering.
+- Syntax highlighting.
+- Chat bubbles.
+- Auto-scroll.
+- Empty state.
+- Loading indicator.
+- Header and general UX improvements.
 
-## Engineering Decisions
+### What I learned
 
-- Kept the current component architecture.
+- Good AI UX is mostly about perceived responsiveness.
+- Markdown rendering requires careful handling for code blocks.
+- Small UX improvements significantly improve usability.
+
+### Engineering Decisions
+
+- Kept the existing component architecture.
 - Avoided premature abstractions.
-- Deferred Copy Code Button until a better Markdown rendering strategy is implemented.
+- Deferred Copy Code until a richer Markdown solution is needed.
 
 ---
 
-# Sprint 4 — Prompt Engineering
+## Sprint 4 — Prompt Engineering
 
-## Summary
+### Goal
 
-This sprint focused on introducing a maintainable, provider-agnostic prompt architecture as the foundation for future AI capabilities.
+Build a provider-agnostic prompt and generation architecture.
 
-## Implemented
+### What I built
 
-- System prompts
-- Prompt composition
-- Prompt presets
-- Dynamic prompt context
+- Centralized prompt architecture.
+- Prompt composition.
+- Prompt presets.
+- Dynamic prompt context.
+- Centralized generation configuration.
+- Temperature control.
+- Top-P control.
+- Max output tokens.
+- Model selection.
+- Provider-agnostic AI error normalization.
 
-## Engineering Decisions
+### What I learned
 
-- Centralized prompt construction outside the API route.
-- Designed prompt composition to be provider-agnostic.
-- Built a composable architecture that can evolve to support RAG, Tool Calling, Agents, and MCP.
-- Deferred prompt controls (temperature, Top-P, max tokens, model selector) until the prompt architecture was established.
+- Prompt engineering is more than writing prompts; generation parameters strongly influence outputs.
+- Temperature controls randomness during token sampling.
+- Top-P limits the candidate token distribution before sampling.
+- Max output tokens constrain response length but do not influence reasoning quality.
+- Provider abstractions should hide provider-specific APIs and errors.
+- Streaming errors occur while consuming the stream, not when creating it.
 
-## Remaining
+### Engineering Decisions
 
-- Temperature control
-- Top-P control
-- Max tokens
-- Model selector
-- Prompt inspector
+- Centralized prompt composition outside the API route.
+- Kept generation configuration as the single source of truth.
+- Introduced provider-agnostic AI error normalization.
+- Deferred the Prompt Inspector to Sprint 8 (AI Observability), where it can inspect prompts, context, tool calls, RAG, latency and token usage from a single debugging interface.
