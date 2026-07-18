@@ -1,6 +1,6 @@
 # Project State
 
-Last Updated: 2026-07-07
+Last Updated: 18-07-2026
 
 ## Completed
 
@@ -43,6 +43,25 @@ Last Updated: 2026-07-07
 
 The Prompt Inspector was postponed to the AI Observability sprint, where it can expose prompts, context, RAG retrievals, tool calls, MCP interactions, latency and token usage from a single debugging interface.
 
+## Sprint 5 — Structured Outputs (In Progress)
+
+Status: 🚧 In Progress
+
+Completed
+
+- Introduced the `ai/generate` module to centralize AI generation.
+- Extracted generation configuration merging into `resolveGenerationConfig`.
+- Refactored the chat route to delegate AI generation to the new module.
+- Preserved existing streaming behavior.
+
+Pending
+
+- Support structured outputs.
+- Introduce Zod schemas.
+- Create reusable object generation.
+- Implement `/api/analyze`.
+- Handle validation failures.
+
 ## Current Sprint
 
 Sprint 5
@@ -70,16 +89,6 @@ DefaultChatTransport
 ↓
 
 Gemini
-
-## Next Tasks
-
-### Prompt Engineering
-
-- System prompts
-- Prompt organization
-- Prompt presets
-- Prompt engineering fundamentals
-- Provider-agnostic prompt architecture
 
 ## Decisions
 

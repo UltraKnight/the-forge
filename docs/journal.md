@@ -122,3 +122,40 @@ Build a provider-agnostic prompt and generation architecture.
 - Kept generation configuration as the single source of truth.
 - Introduced provider-agnostic AI error normalization.
 - Deferred the Prompt Inspector to Sprint 8 (AI Observability), where it can inspect prompts, context, tool calls, RAG, latency and token usage from a single debugging interface.
+
+---
+
+## Sprint 5 — AI Generation Layer (Infrastructure)
+
+### Goal
+
+Prepare the AI layer for structured outputs without changing application behavior.
+
+### What I built
+
+- Introduced a dedicated `ai/generate` module.
+- Moved AI generation logic out of the chat route.
+- Centralized generation configuration resolution.
+- Reduced coupling between HTTP routes and the AI SDK.
+- Preserved the existing streaming chat behavior.
+
+### What I learned
+
+- A thin application layer makes AI integrations easier to evolve.
+- Separating transport (HTTP) from generation logic improves maintainability.
+- AI SDK APIs evolve quickly; implementations should be isolated behind project abstractions.
+- Small refactoring steps are safer than introducing new features while restructuring.
+
+### Engineering Decisions
+
+- Centralize all LLM interactions behind a single generation module.
+- Keep Route Handlers focused on HTTP concerns.
+- Delay structured outputs until the generation abstraction is stable.
+- Follow the installed AI SDK version instead of examples from older releases.
+
+### Next Sprint
+
+- Add structured outputs.
+- Introduce reusable Zod schemas.
+- Support typed AI responses.
+- Handle validation failures gracefully.

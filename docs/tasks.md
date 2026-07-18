@@ -87,18 +87,31 @@ Engineering Concepts
 
 ## Sprint 5 — Structured Outputs
 
-### Objectives
+### Status
 
-- [ ] JSON mode
-- [ ] Zod schemas
-- [ ] Structured responses
-- [ ] Validation
-- [ ] Error recovery
+🚧 In Progress
 
-Engineering Concepts
+### Completed
 
+- [x] Create the `ai/generate` module.
+- [x] Move AI generation out of the chat route.
+- [x] Centralize generation configuration resolution.
+
+### Remaining
+
+- [ ] Add structured output support.
+- [ ] Introduce reusable Zod schemas.
+- [ ] Implement typed AI generation.
+- [ ] Handle schema validation failures.
+- [ ] Create the first structured endpoint (`/api/analyze`).
+
+### Engineering Concepts
+
+- Structured Outputs
+- Constrained Generation
+- Zod Validation
 - Type-safe AI
-- Reliable outputs
+- Provider-agnostic AI abstractions
 
 ---
 

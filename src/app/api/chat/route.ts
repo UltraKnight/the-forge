@@ -1,3 +1,4 @@
+import { generate } from '@/ai/generate';
 import {
   defaultGenerationConfig,
   GenerationConfig,
@@ -20,22 +21,11 @@ interface ChatRequest {
 
 export async function POST(req: Request) {
   const { messages, generationConfig }: ChatRequest = await req.json();
-  const config: GenerationConfig = {
-    ...defaultGenerationConfig,
-    ...generationConfig,
-    model: {
-      ...defaultGenerationConfig.model,
-      ...generationConfig?.model,
-    },
-  };
 
-  const { model, ...options } = config;
-
-  const result = streamText({
-    ...options,
-    model: getLanguageModel(model),
+  const result = await generate({
+    messages,
+    generationConfig,
     system: composePrompt(),
-    messages: await convertToModelMessages(messages),
   });
 
   return createUIMessageStreamResponse({
