@@ -8,9 +8,9 @@
 
 ## Current Sprint
 
-Sprint 4 — Prompt Engineering
+Sprint 5 — Structured Outputs
 
-Status: 🟢 Ready to start
+Status: ✅ Completed
 
 ---
 
@@ -89,7 +89,7 @@ Engineering Concepts
 
 ### Status
 
-🚧 In Progress
+✅ Completed
 
 ### Completed
 
@@ -99,11 +99,11 @@ Engineering Concepts
 
 ### Remaining
 
-- [ ] Add structured output support.
-- [ ] Introduce reusable Zod schemas.
-- [ ] Implement typed AI generation.
-- [ ] Handle schema validation failures.
-- [ ] Create the first structured endpoint (`/api/analyze`).
+- [x] Add structured output support.
+- [x] Introduce reusable Zod schemas.
+- [x] Implement typed AI generation.
+- [x] Handle schema validation failures.
+- [x] Create the first structured POST analyze endpoint.
 
 ### Engineering Concepts
 

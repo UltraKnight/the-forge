@@ -1,14 +1,8 @@
-import { generate } from '@/ai/generate';
-import {
-  defaultGenerationConfig,
-  GenerationConfig,
-} from "@/ai/config/generation";
+import { generate } from "@/ai/generate";
+import { GenerationConfig } from "@/ai/config/generation";
 import { composePrompt } from "@/ai/prompts";
-import { getLanguageModel } from "@/ai/providers";
 import {
-  convertToModelMessages,
   createUIMessageStreamResponse,
-  streamText,
   toUIMessageStream,
   UIMessage,
 } from "ai";
@@ -31,9 +25,7 @@ export async function POST(req: Request) {
   return createUIMessageStreamResponse({
     stream: toUIMessageStream({
       stream: result.stream,
-      onError: (error) => {
-        return serializeAIError(normalizeAIError(error));
-      },
+      onError: (error) => serializeAIError(normalizeAIError(error)),
     }),
   });
 }

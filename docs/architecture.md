@@ -57,3 +57,23 @@ Browser
 
 - Generates the response
 - Has no memory between requests
+
+## Structured analysis flow
+
+```text
+POST /api/analyze
+        │
+        ▼
+Zod request validation
+        │
+        ▼
+generateObject()
+        │
+        ▼
+AI SDK Output.object + Zod response schema
+        │
+        ▼
+Validated JSON analysis
+```
+
+`/api/analyze` receives supplied website content. It intentionally does not fetch URLs; browser acquisition is a future responsibility.

@@ -159,3 +159,30 @@ Prepare the AI layer for structured outputs without changing application behavio
 - Introduce reusable Zod schemas.
 - Support typed AI responses.
 - Handle validation failures gracefully.
+
+---
+
+## Sprint 5 — Structured Outputs
+
+### Goal
+
+Generate reliable, typed website analyses instead of parsing free-form model text.
+
+### What I built
+
+- Added a reusable, provider-agnostic `generateObject` utility built on AI SDK v7 `Output.object`.
+- Added Zod request and response schemas for website analysis.
+- Implemented `POST /api/analyze`, which accepts supplied website content and returns a validated analysis object.
+- Added client-input validation and a clear `422` response when model output fails schema validation.
+
+### What I learned
+
+- JSON prompting only asks a model to follow a format; it does not validate the result.
+- Structured output combines a schema with provider-supported constrained generation and runtime validation.
+- Zod is both the runtime contract and the source of inferred TypeScript types.
+
+### Engineering Decisions
+
+- The endpoint analyses supplied content, not arbitrary URLs. Fetching and inspecting live sites belongs to the Browser Intelligence phase.
+- The route owns HTTP validation and status codes; the generation module owns AI SDK calls.
+- Schema validation failures are explicit and safe to retry.
