@@ -45,26 +45,30 @@ The Prompt Inspector was postponed to the AI Observability sprint, where it can 
 
 ## Sprint 5 — Structured Outputs
 
-Status: ✅ Completed
+- Introduced the `ai/generate` module.
+- Centralized generation configuration resolution.
+- Added reusable object generation.
+- Introduced Zod schemas for website analysis.
+- Added the `/api/analyze` endpoint.
+- Added structured output validation.
 
-Completed
+### Outcome
 
-- Introduced the `ai/generate` module to centralize AI generation.
-- Extracted generation configuration merging into `resolveGenerationConfig`.
-- Refactored the chat route to delegate AI generation to the new module.
-- Preserved existing streaming behavior.
+Forge can now generate validated, type-safe AI responses.
+This establishes the foundation for future tools, agents and browser analysis.
 
-Completed
+## Sprint 6 — Tool Calling
 
-- [x] Support structured outputs.
-- [x] Introduce Zod schemas.
-- [x] Create reusable object generation.
-- [x] Implement the POST analyze endpoint.
-- [x] Handle validation failures.
+- Introduced Tool Calling infrastructure.
+- Added a centralized tool registry.
+- Implemented the first production tool (`fetchUrl`).
+- Enabled multi-step tool execution with `stopWhen`.
+- Validated end-to-end Tool Calling using Gemini 2.5 Flash.
 
-## Current Sprint
+### Outcome
 
-Sprint 6
+Forge can now extend LLM capabilities through server-side tools.
+This lays the foundation for browser analysis, MCP integration and AI workflows.
 
 ## Current Architecture
 

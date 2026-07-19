@@ -7,6 +7,7 @@ import {
   UIMessage,
 } from "ai";
 import { normalizeAIError, serializeAIError } from "@/ai/errors";
+import { tools } from "@/ai/tools";
 
 interface ChatRequest {
   messages: UIMessage[];
@@ -20,6 +21,7 @@ export async function POST(req: Request) {
     messages,
     generationConfig,
     system: composePrompt(),
+    tools,
   });
 
   return createUIMessageStreamResponse({

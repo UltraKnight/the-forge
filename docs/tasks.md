@@ -87,23 +87,15 @@ Engineering Concepts
 
 ## Sprint 5 — Structured Outputs
 
-### Status
-
-✅ Completed
-
-### Completed
+### Objectives
 
 - [x] Create the `ai/generate` module.
 - [x] Move AI generation out of the chat route.
 - [x] Centralize generation configuration resolution.
-
-### Remaining
-
-- [x] Add structured output support.
-- [x] Introduce reusable Zod schemas.
-- [x] Implement typed AI generation.
-- [x] Handle schema validation failures.
-- [x] Create the first structured POST analyze endpoint.
+- [x] Introduce reusable object generation.
+- [x] Introduce Zod schemas.
+- [x] Implement the `POST /api/analyze` endpoint.
+- [x] Handle structured output validation failures.
 
 ### Engineering Concepts
 
@@ -111,7 +103,7 @@ Engineering Concepts
 - Constrained Generation
 - Zod Validation
 - Type-safe AI
-- Provider-agnostic AI abstractions
+- AI generation abstraction
 
 ---
 
@@ -119,16 +111,20 @@ Engineering Concepts
 
 ### Objectives
 
-- [ ] First tool
-- [ ] Multiple tools
-- [ ] Tool results
-- [ ] Tool UI
-- [ ] Tool debugging panel
+- [x] Introduce Tool Calling.
+- [x] Create a centralized tool registry.
+- [x] Implement the first production tool (`fetchUrl`).
+- [x] Integrate tools with the chat generation pipeline.
+- [x] Enable multi-step tool execution with `stopWhen`.
+- [x] Validate end-to-end Tool Calling.
 
-Engineering Concepts
+### Engineering Concepts
 
-- Function calling
-- Tool execution lifecycle
+- Tool Calling
+- Multi-step execution
+- Tool lifecycle
+- Tool descriptions
+- AI SDK Tools
 
 ---
 

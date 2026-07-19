@@ -186,3 +186,34 @@ Generate reliable, typed website analyses instead of parsing free-form model tex
 - The endpoint analyses supplied content, not arbitrary URLs. Fetching and inspecting live sites belongs to the Browser Intelligence phase.
 - The route owns HTTP validation and status codes; the generation module owns AI SDK calls.
 - Schema validation failures are explicit and safe to retry.
+
+---
+
+## Sprint 6 — Tool Calling
+
+### Goal
+
+Introduce Tool Calling to allow the model to execute server-side capabilities.
+
+### What I built
+
+- Introduced Tool Calling infrastructure.
+- Added a centralized tool registry.
+- Implemented the first production tool (`fetchUrl`).
+- Integrated tools with the chat generation pipeline.
+- Enabled multi-step execution using `stopWhen`.
+
+### What I learned
+
+- Tools extend the model with application capabilities.
+- The model decides when to invoke a tool.
+- Tool descriptions are part of the prompt.
+- Multi-step execution requires explicit configuration.
+- Tools should remain thin and delegate business logic.
+
+### Engineering Decisions
+
+- Keep tools focused on a single responsibility.
+- Reuse tools through a centralized registry.
+- Avoid embedding business logic inside tools.
+- Build product capabilities incrementally instead of creating generic abstractions.

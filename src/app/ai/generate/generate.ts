@@ -3,6 +3,7 @@ import {
   generateText,
   Output,
   streamText,
+  ToolSet,
   type FlexibleSchema,
   type InferSchema,
   type UIMessage,
@@ -16,6 +17,7 @@ export interface GenerateOptions {
   messages: UIMessage[];
   system?: string;
   generationConfig?: Partial<GenerationConfig>;
+  tools?: ToolSet;
 }
 
 export interface GenerateObjectOptions<SCHEMA extends FlexibleSchema> {
@@ -27,16 +29,32 @@ export interface GenerateObjectOptions<SCHEMA extends FlexibleSchema> {
   generationConfig?: Partial<GenerationConfig>;
 }
 
-export async function generate({ messages, system, generationConfig }: GenerateOptions) {
+export async function generate({
+  messages,
+  system,
+  generationConfig,
+  tools,
+}: GenerateOptions) {
   const config = resolveGenerationConfig(generationConfig);
   const model = getLanguageModel(config.model);
   const modelMessages = await convertToModelMessages(messages);
 
-  return streamText({ ...config, model, system, messages: modelMessages });
+  return streamText({
+    ...config,
+    model,
+    system,
+    messages: modelMessages,
+    tools,
+  });
 }
 
 export async function generateObject<SCHEMA extends FlexibleSchema>({
-  schema, schemaName, schemaDescription, prompt, system, generationConfig,
+  schema,
+  schemaName,
+  schemaDescription,
+  prompt,
+  system,
+  generationConfig,
 }: GenerateObjectOptions<SCHEMA>): Promise<InferSchema<SCHEMA>> {
   const config = resolveGenerationConfig(generationConfig);
   const { output } = await generateText({
@@ -44,7 +62,11 @@ export async function generateObject<SCHEMA extends FlexibleSchema>({
     model: getLanguageModel(config.model),
     system,
     prompt,
-    output: Output.object({ schema, name: schemaName, description: schemaDescription }),
+    output: Output.object({
+      schema,
+      name: schemaName,
+      description: schemaDescription,
+    }),
   });
 
   return output;
